@@ -34,4 +34,7 @@ def calculate_date(start_time, end_time):
     else:
         return end_time.strftime("%m/%d/%y")
 
-
+def save_to_file(date, startTime, endTime, totalTime):
+    filler = ","
+    with open("timeArchives.txt", "a+", encoding="utf8") as f:
+        f.write(str(date + filler + startTime.strftime("%H:%M:%S") + filler + endTime.strftime("%H:%M:%S") + filler + totalTime + "\n"))
