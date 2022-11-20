@@ -2,20 +2,77 @@ import timer
 import tkinter as tk
 from tkinter import messagebox
 
+global start_time
+
+def toggle_buttons():
+    """
+    switches the state of the 'start' and 'end' buttons, only allowing one to be active at a time
+    :return:
+    """
+    if start_button["state"] == "normal":
+        start_button["state"] = "disabled"
+        end_button["state"] = "normal"
+    else:
+        start_button["state"] = "normal"
+        end_button["state"] = "disabled"
+
 def start_recording():
-    pass
+    """
+    sets the first time and applies the 'RCORDING' label
+    :return:
+    """
+    global start_time
+    start_time = timer.report_time()
+
+    record_label = tk.Label(root, text="RECORDING", bg="blue", fg="black", wraplength=740)
+    record_label.place(x=220, y=50)
+
+    toggle_buttons()
 
 def end_recording():
-    pass
+    """
+    sets the second time, calculates total time, calculates date, and saves the info to the .txt
+    :return:
+    """
+    end_time = timer.report_time()
+
+    record_label = tk.Label(root, text="RECORDED  ", bg="red", fg="black", wraplength=740)
+    record_label.place(x=220, y=50)
+
+    total_time = timer.calculate_total_time(start_time, end_time)
+    dates = timer.calculate_date(start_time,end_time)
+    comment = set_note(note.get())
+
+    timer.save_to_file(dates, start_time, end_time, total_time, comment)
+
+    toggle_buttons()
 
 def window_close():
+    """
+    asks the user if they want to close the program and saves the time if the user has not done so already
+    :return:
+    """
     root.withdraw()
     answer = messagebox.askokcancel("warning", "Are you sure you want to quit? \n Make sure to hit 'end' first")
     if answer:
-        end_recording()
+        if end_button["state"] == "normal":
+            end_recording()
         root.destroy()
     else:
         root.deiconify()
+
+def set_note(text):
+    """
+
+    :param text: input string from tk text entry box
+    :return: empty string if the box is empty, comma separated string if there is a value
+    """
+    if text != "":
+        return "," + text
+    else:
+        return text
+
+# Placement of GUI objects
 
 root = tk.Tk()
 root.title("Time Tracker, By: Bridger")
