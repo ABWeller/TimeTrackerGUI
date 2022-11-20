@@ -7,7 +7,7 @@ Uses datetime.timedelta() to calculate total time.
 saves a recording of the date, start time, end time, and total time to .txt in root folder.
 Each time recording is saved in this format: 
 ```
-Date, Start, End, Total
+Date, Start, End, Total, *Note
 ```
 Easy to convert to CSV file for use in Excel
 
