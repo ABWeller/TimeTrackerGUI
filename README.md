@@ -1,5 +1,7 @@
 # TimeTrackerGUI
- A simple GUI time tracker using Python and tkinter. Exports times to .txt file for archival purposes. I made this in oder to keep track of my hours working on projects
+A simple GUI time tracker using Python and tkinter. Exports times to .txt file for archival purposes. 
+I made this in order to keep track of my hours working on projects.
+Uses datetime.timedelta() to calculate total time.
 
 # save
 saves a recording of the date, start time, end time, and total time to .txt in root folder.
