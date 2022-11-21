@@ -8,8 +8,9 @@ To build your own executable, use your favorite converter such as auto-py-to-exe
 
 or
 
-run the timetracker_cmd through the commandline or your favorite IDE.
-both files have timer.py as a dependency
+Run timetracker_cmd.py through the commandline or your favorite IDE.
+
+Both files have timer.py as a dependency
 
 # save
 saves a recording of the date, start time, end time, and total time to .txt in root folder.
@@ -20,6 +21,6 @@ Date, Start, End, Total, *Note
 Easy to convert to CSV file for use in Excel
 
 # issues
-- antivirus can cause problems with writing to .txt file. Disable AV in source folder
+- antivirus can cause problems with writing to or creating the .txt file. Disable AV in source folder
 - timer does not count over 24 hours, though no one should be working that long
 
