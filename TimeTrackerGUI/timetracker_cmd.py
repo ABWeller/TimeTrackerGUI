@@ -14,9 +14,10 @@ while user_input != "close":
     elif user_input == "stop" and is_started:
         end = timer.report_time()
         total = timer.calculate_total_time(start, end)
+        note = "," + input("Add note: ")
         print("end time: " + end.strftime("%H:%M:%S"))
         print("Total: " + total)
-        timer.save_to_file(timer.calculate_date(start,end), start, end, total)
+        timer.save_to_file(timer.calculate_date(start,end), start, end, total, note)
         is_started = False
     elif user_input == "stop" and not is_started:
         print("Must start timer before stopping")
